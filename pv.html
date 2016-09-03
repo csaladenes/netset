@@ -1,0 +1,27 @@
+
+<!doctype html>
+<meta charset="utf-8">
+
+<!-- load D3js -->
+<script src="d3.js"></script>
+
+<!-- load D3plus after D3js -->
+<script src="d3plus.js"></script>
+
+<!-- create container element for visualization -->
+<div id="viz"></div>
+
+<script>
+
+d3.json("res/pv.json",function(data){
+  // instantiate d3plus
+  var visualization = d3plus.viz()
+    .container("#viz")  // container DIV to hold the visualization
+    .data(data)  // data to use with the visualization
+    .type("stacked")    // visualization type
+    .id("country")         // key for which our data is unique on
+	.x({"value":"class","label":"Societal Power Demand [W / capita]"})         // key for x-axis
+    .y({"value":"value","label":"GDP / capita [2011 constant international $ PPP]"})        // key for y-axis
+    .draw()             // finally, draw the visualization!
+})
+</script>
