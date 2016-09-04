@@ -478,6 +478,7 @@ a:visited{
   if (initcountry=="None") {
 	initcountry=initcountrysave;
   }
+  initcountry=initcountry.replace(/%20/g,' ');
 
   sca=(scale==1)?"share":"linear";
 
