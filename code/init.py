@@ -10,14 +10,14 @@ get_ipython().magic(u'matplotlib inline')
 plt.style.use('ggplot')
 
 
-# In[ ]:
+# In[2]:
 
 #suppres warnings
 import warnings
 warnings.simplefilter(action = "ignore")
 
 
-# In[60]:
+# In[3]:
 
 import sys
 reload(sys)
@@ -26,7 +26,7 @@ sys.setdefaultencoding("utf-8")
 
 # ## Country and region name converters
 
-# In[2]:
+# In[4]:
 
 #country name converters
 
@@ -192,10 +192,10 @@ def cnc(country): #country name converter
 
 # Set path to data repository
 
-# In[3]:
+# In[5]:
 
-#path='https://dl.dropboxusercontent.com/u/531697/datarepo/Set/db/
-path='E:/Dropbox/Public/datarepo/netset/'
+dbpath='E:/Dropbox/Public/datarepo/netset/'
+savepath='../'
 
 
 # # Population
@@ -204,20 +204,27 @@ path='E:/Dropbox/Public/datarepo/netset/'
 # 
 # Due to being the reference database for country names, the cell below needs to be run first, before any other databases.
 
-# In[4]:
+# In[12]:
 
 #population data
-pop=pd.read_csv(path+'db/pop.csv').set_index(['Country','Year']).unstack(level=1)
+pop=pd.read_json(dbpath+'db/pop.json')
+
+
+# In[7]:
+
+#population data
+#deprecated
+#pop=pd.read_csv(dbpath+'db/pop.csv.save').set_index(['Country','Year']).unstack(level=1)
 
 
 # # Units
 
-# In[5]:
+# In[18]:
 
 #initialize data and constants
 data={}
 countries={i for i in pop.index}
-years={int(i[1]) for i in pop.columns}
+years={i for i in pop.columns}
 dbs={'bp','eia'}
 datatypes={'prod','cons','emi','res'}
 allfuels=['oil','coal','gas','nuclear','biofuels','hydro','geo_other','solar','wind']
@@ -236,7 +243,7 @@ def reset(what='all',datatype='all'):
     if what=='all':
         #reset all values of database
         fuels=allfuels+['nrg','nrg_sum']
-        data={i:{int(k[1]):{'energy':{j:{k:{l:np.NaN for l in dbs} for k in datatypes}                              for j in fuels},'population':long(pop.loc[i][k])*1000,                                              'consumer_efficiency':0.5,                                              'cumulative_emissions':0}                              for k in pop.columns}                              #we use population as the default database for country names
+        data={i:{k:{'energy':{j:{m:{l:np.NaN for l in dbs} for m in datatypes}                              for j in fuels},'population':long(pop.loc[i][k])*1000,                                              'consumer_efficiency':0.5,                                              'cumulative_emissions':0}                              for k in pop.columns}                              #we use population as the default database for country names
                               for i in pop.index} 
     else:
         countries=data.keys()
@@ -278,7 +285,7 @@ carbon_budget=840*c_to_co2 #840 GtC as per http://www.ipcc.ch/report/ar5/wg1/
 
 # ## Plotters
 
-# In[8]:
+# In[19]:
 
 from matplotlib.patches import Rectangle
 def stackplotter(country,db='navg',datatype='all',fuels='all',limits=[1965,2015]):
@@ -332,7 +339,7 @@ def stackplotter(country,db='navg',datatype='all',fuels='all',limits=[1965,2015]
     plt.show()
 
 
-# In[9]:
+# In[20]:
 
 def keyplotter(d,c="royalBlue",o=1,lw=1):
     
@@ -344,7 +351,7 @@ def keyplotter(d,c="royalBlue",o=1,lw=1):
     plt.plot(x,y,color=c,alpha=o,lw=lw)
 
 
-# In[50]:
+# In[21]:
 
 def subplotter(country,fuel,db,datatype,ax):
     try:
@@ -444,7 +451,7 @@ def getter(country,fuel,db='avg'):
 
 # ## Interpolators
 
-# In[139]:
+# In[22]:
 
 def interpolate(d,years,gfit=2,depth=1,polyorder=1,override=False,ends=False):
 #d=helper
@@ -555,7 +562,7 @@ def interpolate(d,years,gfit=2,depth=1,polyorder=1,override=False,ends=False):
     return mydict
 
 
-# In[39]:
+# In[23]:
 
 def scurve(x):
     lamda=8 #curve steepness control
@@ -573,26 +580,26 @@ x=np.arange(100)/100.0
 
 # ## Country ISO codes
 
-# In[12]:
+# In[24]:
 
-cc=pd.read_excel(path+'db/Country Code and Name ISO2 ISO3.xls')
+cc=pd.read_excel(dbpath+'db/Country Code and Name ISO2 ISO3.xls')
 #http://unstats.un.org/unsd/tradekb/Attachment321.aspx?AttachmentType=1
 
 
-# In[13]:
+# In[25]:
 
 ccs=cc['Country Code'].values
 
 
 # ## Country neighbor list
 
-# In[14]:
+# In[26]:
 
-neighbors=pd.read_csv(path+'db/contry-geotime.csv')
+neighbors=pd.read_csv(dbpath+'db/contry-geotime.csv')
 #https://raw.githubusercontent.com/ppKrauss/country-geotime/master/data/contry-geotime.csv
 
 
-# In[15]:
+# In[27]:
 
 #country name converter from iso to comtrade and back
 iso2c={}
@@ -602,7 +609,7 @@ for i in cc.T.iteritems():
     isoc2[i[1][1]]=i[1][0]
 
 
-# In[16]:
+# In[28]:
 
 #country name converter from pop to iso
 pop2iso={}
@@ -610,7 +617,7 @@ for i in cc.T.iteritems():
     pop2iso[cnc(i[1][1])]=int(i[1][0])
 
 
-# In[17]:
+# In[29]:
 
 #country name converter from alpha 2 to iso
 c2iso={}
@@ -620,7 +627,7 @@ c2iso['NA']=c2iso['nan'] #adjust for namibia
 c2iso.pop('nan');
 
 
-# In[18]:
+# In[30]:
 
 #create country neighbor adjacency list based on iso country number codes
 c2neighbors={}
@@ -629,7 +636,7 @@ for i in neighbors.T.iteritems():
     if (str(i[1][1])!='nan'): c2neighbors[int(i[1][1])]=[c2iso[k] for k in z if k!='nan']
 
 
-# In[36]:
+# In[31]:
 
 #extend iso codes not yet encountered
 iso2c[729]="Sudan"
@@ -642,43 +649,47 @@ iso2c[652]="Saint Barthélemy"
 
 # ## GDP
 
-# In[19]:
+# In[32]:
 
-gdp=pd.read_excel(path+'db/GDP.xls',skiprows=2)
+#deprecated
+#gdp=pd.read_excel(path+'db/GDP.xls',skiprows=2)
+gdp=pd.read_excel(dbpath+'db/Download-GDPcurrent-USD-countries.xls',skiprows=2)
 #http://unstats.un.org/unsd/snaama/downloads/Download-GDPcurrent-USD-countries.xls
 #imports are in current terms, so we need also current terms here
 
 
-# In[20]:
+# In[33]:
 
 gdpc={}
+firstyear=gdp.columns[2]
+lastyear=gdp.columns[len(gdp.columns)-1]
 for i in gdp.T.iteritems():
     if (i[1][1]=='Total Value Added'):
         country=cnc(i[1][0])
         if country not in gdpc:gdpc[country]={}
-        for j in range(1970,2015):
-            gdpc[country][j]=i[1][j+2-1970]
+        for j in range(firstyear,lastyear):
+            gdpc[country][j]=i[1][j+2-firstyear]
 
 
 # ## Coords
 
-# In[28]:
+# In[34]:
 
 import requests, StringIO
 
 
-# In[38]:
+# In[35]:
 
 #r = requests.get('http://gothos.info/resource_files/country_centroids.zip')
 # use StringIO.StringIO(r.content) below if requests is used
 
-z = zipfile.ZipFile(path+'../universal/country_centroids.zip')
+z = zipfile.ZipFile(dbpath+'db/country_centroids.zip')
 coord=pd.read_csv(z.open('country_centroids_all.csv'),sep='\t')    .drop(['DMS_LAT','DMS_LONG','MGRS','JOG','DSG','FULL_NAME',       'ISO3136','AFFIL','FIPS10','MOD_DATE'],axis=1)
 coord.columns=['LAT','LONG','Country']
 coord=coord.set_index('Country',drop=True)
 
 
-# In[30]:
+# In[36]:
 
 #create normalized distance matrix of countries
 names=[]
@@ -688,7 +699,7 @@ coord['NAME']=names
 coord=coord.set_index('NAME',drop=True)
 
 
-# In[40]:
+# In[37]:
 
 from math import radians, cos, sin, asin, sqrt
 
@@ -718,13 +729,13 @@ def distance(i,j):
 
 # Formats `data` dictionary into `json` format for epxloration in visualization.
 
-# In[55]:
+# In[38]:
 
 tradealpha={}
 goodcountries=sorted(data.keys())
 
 
-# In[6]:
+# In[39]:
 
 #save with zeros
 def save0(sd,countrylist=[],db='navg3'):
@@ -777,21 +788,21 @@ def save0(sd,countrylist=[],db='navg3'):
             countries.append(country)
             popsave[country]=popdummy
         
-        file(path+'json/'+str(sd)+'/data.json','w').write(json.dumps(tosave)) 
+        file(savepath+'json/'+str(sd)+'/data.json','w').write(json.dumps(tosave)) 
         zf = zipfile.ZipFile(path+'json/'+str(sd)+'/'+str(country.encode('utf-8').replace('/','&&'))+'.zip', mode='w')
-        zf.write(path+'json/'+str(sd)+'/data.json','data.json',compress_type=compression)
+        zf.write(savepath+'json/'+str(sd)+'/data.json','data.json',compress_type=compression)
         zf.close()
         
     #save all countries list
-    file(path+'json/'+str(sd)+'/'+'countries.json','w').write(json.dumps(countries)) 
+    file(savepath+'json/'+str(sd)+'/'+'countries.json','w').write(json.dumps(countries)) 
     
     #save countries populations
-    file(path+'json/'+str(sd)+'/'+'pop.json','w').write(json.dumps(popsave))     
+    file(savepath+'json/'+str(sd)+'/'+'pop.json','w').write(json.dumps(popsave))     
     
     print ' done'
 
 
-# In[7]:
+# In[40]:
 
 #save without zeroes
 def save(sd,countrylist=[],db='navg3'):
@@ -848,16 +859,16 @@ def save(sd,countrylist=[],db='navg3'):
             countries.append(country)
             popsave[country]=popdummy
         
-        file(path+'json/'+str(sd)+'/data.json','w').write(json.dumps(tosave2)) 
-        zf = zipfile.ZipFile(path+'json/'+str(sd)+'/'+str(country.encode('utf-8').replace('/','&&'))+'.zip', mode='w')
-        zf.write(path+'json/'+str(sd)+'/data.json','data.json',compress_type=compression)
+        file(savepath+'json/'+str(sd)+'/data.json','w').write(json.dumps(tosave2)) 
+        zf = zipfile.ZipFile(savepath+'json/'+str(sd)+'/'+str(country.encode('utf-8').replace('/','&&'))+'.zip', mode='w')
+        zf.write(savepath+'json/'+str(sd)+'/data.json','data.json',compress_type=compression)
         zf.close()
         
     #save all countries list
-    file(path+'json/'+str(sd)+'/'+'countries.json','w').write(json.dumps(countries)) 
+    file(savepath+'json/'+str(sd)+'/'+'countries.json','w').write(json.dumps(countries)) 
     
     #save countries populations
-    file(path+'json/'+str(sd)+'/'+'pop.json','w').write(json.dumps(popsave))     
+    file(savepath+'json/'+str(sd)+'/'+'pop.json','w').write(json.dumps(popsave))     
     
     print ' done'
 
@@ -866,18 +877,18 @@ def save(sd,countrylist=[],db='navg3'):
 
 # This is to automatically save this notebook as a Python script to be loaded in other notebooks. In order to prevent an infitine loop, there is a trigger variable `initlive`. PLease go to the cell on the bottom to set it to `True` and then run the cell with the `system` magic in it. On external call, `initilive` will default to `False`, thus preventing the infinite loop.
 
-# In[1]:
+# In[41]:
 
 initlive=False
 
 
-# In[4]:
+# In[42]:
 
 if initlive:
     get_ipython().magic(u'system jupyter nbconvert --to script init.ipynb')
 
 
-# In[2]:
+# In[43]:
 
 initlive=True
 
