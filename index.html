@@ -79,6 +79,14 @@ a:visited{
   -webkit-transform: rotate(-360deg);
   transform: rotate(-360deg);
 }
+.rotmenu2 {
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+}
+.rotmenu2:hover {
+  -webkit-transform: scale(1.1,1.1);
+  transform: scale(1.1,1.1);
+}
 </style>
 
 <script>
@@ -155,10 +163,10 @@ a:visited{
 	<div style="position: fixed;
     right: 15px;
     top: 15px;
-	z-index:200;
+	z-index:200;"
     alt="Select Scenario"
 	title="Select Scenario" id="scenariolist"></div>
-	<img style="position: absolute;
+	<img class="rotmenu2" style="position: absolute;
     right: 60px;
     top:250px;
     height: 52px;
@@ -167,16 +175,25 @@ a:visited{
 	alt="GHI Resource Plot"
 	title="GHI Resource Plot"
 	onclick='show(5);'>
-	<img style="position: absolute;
+	<img class="rotmenu2" style="position: absolute;
     right: 0px;
     top: 250px;
     height: 52px;
 	border: solid  1px #888; background-color:rgba(207,19,19,1);
     width: 52px;" src="img/nw.png"
-	alt="DNI Resource Plot"
-	title="DNI Resource Plot"
+	alt="Resource network"
+	title="Resource network"
 	onclick='show(6);'>
-	<img style="position: absolute;
+	<img class="rotmenu2" style="position: absolute;
+    right: 60px;
+    top: 420px;
+    height: 52px;
+	border: solid  1px #888; background-color:rgba(207,19,19,1);
+    width: 52px;" src="img/nw.png"
+	alt="Influence"
+	title="Influence"
+	onclick='show(7);'>
+	<img class="rotmenu2" style="position: absolute;
     right: 120px;
     top: 250px;
     height: 52px;
@@ -185,27 +202,27 @@ a:visited{
 	alt="Resource Distribution Plots"
 	title="Resource Distribution Plots"
 	onclick='show(4);'>
-	<img style="position: absolute;
+	<img class="rotmenu2" style="position: absolute;
     right: 60px;
-    top:350px;
+    top:335px;
     height: 52px;
 	border: solid 1px #888;
     width: 52px;" src="icon/stacked.png"
 	alt="Timeline"
 	title="Timeline"
 	onclick='show(1);'>
-	<img style="position: absolute;
+	<img class="rotmenu2" style="position: absolute;
     right: 0px;
-    top: 350px;
+    top: 335px;
     height: 52px;
 	border: solid  1px #888;
     width: 52px;" src="icon/tree.png"
 	alt="Treemap"
 	title="Treemap"
 	onclick='show(2);'>
-	<img style="position: absolute;
+	<img class="rotmenu2" style="position: absolute;
     right: 120px;
-    top: 350px;
+    top: 335px;
     height: 52px;
 	border: solid  1px #888;
     width: 52px;" src="icon/line.png"
@@ -213,7 +230,7 @@ a:visited{
 	title="Line Plot"
 	onclick='show(3);'>
 	<a href="http://netset.csaladen.es" target="_self">
-	<img class="rotmenu" style="position: absolute;
+	<img class="rotmenu2" class="rotmenu" style="position: absolute;
     right: 40px;
     top: 20px;
 	border: none;
@@ -231,19 +248,13 @@ a:visited{
     width: 100px;"/>NETSET 1.0</div></a>
 	<div style="position: absolute;
     right: 0px;
-    top: 485px;
+    top: 570px;
     height: 2px;
 	background-color:#ccc;
 	width: 174px;"></div>
 	<div style="position: absolute;
     right: 0px;
     top: 0px;
-    height: 2px;
-	background-color:#ccc;
-	width: 174px;"></div>
-	<div style="position: absolute;
-    right: 0px;
-    top: 330px;
     height: 2px;
 	background-color:#ccc;
 	width: 174px;"></div>
@@ -256,14 +267,14 @@ a:visited{
 	<div id="social" style="z-index:102;position: absolute;
     right: 0px;
 	height:35px;
-    top: 505px;">
-		<span class='st_facebook_custom'><img class="socialico" src="http://www.iconsdb.com/icons/download/silver/facebook-3-24.ico"></span>
-		<span class='st_twitter_custom'><img class="socialico" src="http://www.iconsdb.com/icons/download/silver/twitter-3-24.ico"></span>
-		<span class='st_googleplus_custom'><img class="socialico" src="http://www.iconsdb.com/icons/download/silver/google-plus-3-24.ico"></span>
-		<span class='st_linkedin_custom'><img class="socialico" src="http://www.iconsdb.com/icons/download/silver/linkedin-3-24.ico"></span>
-		<span class='st_email_custom'><img class="socialico" src="http://www.iconsdb.com/icons/download/silver/email-13-24.ico"></span>
-		<a href="" download="" id="csvdownload" ><span><img class="socialico" src="http://www.iconsdb.com/icons/download/silver/csv-24.ico"></span></a>
-		<span id="pngdownloadwrapper"><img class="socialico" src="http://www.iconsdb.com/icons/download/silver/png-24.ico"></span>
+    top: 590px;">
+		<span class='st_facebook_custom'><img class="socialico rotmenu2" src="http://www.iconsdb.com/icons/download/silver/facebook-3-24.ico"></span>
+		<span class='st_twitter_custom'><img class="socialico rotmenu2" src="http://www.iconsdb.com/icons/download/silver/twitter-3-24.ico"></span>
+		<span class='st_googleplus_custom'><img class="socialico rotmenu2" src="http://www.iconsdb.com/icons/download/silver/google-plus-3-24.ico"></span>
+		<span class='st_linkedin_custom'><img class="socialico rotmenu2" src="http://www.iconsdb.com/icons/download/silver/linkedin-3-24.ico"></span>
+		<span class='st_email_custom'><img class="socialico rotmenu2" src="http://www.iconsdb.com/icons/download/silver/email-13-24.ico"></span>
+		<a href="" download="" id="csvdownload" ><span><img class="socialico rotmenu2" src="http://www.iconsdb.com/icons/download/silver/csv-24.ico"></span></a>
+		<span id="pngdownloadwrapper"><img class="socialico rotmenu2" src="http://www.iconsdb.com/icons/download/silver/png-24.ico"></span>
 	</div>
 
 
@@ -283,7 +294,7 @@ a:visited{
 	font-family: Righteous;
 	text-align:center;
 	white-space: nowrap;
-    width: 40px;"/>description</div></a>
+    width: 40px;">description</div></a>
 <a href="http://d3plus.org" target="_blank">
 <img class="rotmenu" style="position: absolute;
     right: 41px;
@@ -299,7 +310,7 @@ a:visited{
 	font-family: Righteous;
 	text-align:center;
 	white-space: nowrap;
-    width: 40px;"/>engine</div></a>
+    width: 40px;">engine</div></a>
 <a href="http://www.csaladen.es" target="_blank">
 <img class="rotmenu" style="position: absolute;
     right: 0px;
@@ -331,7 +342,7 @@ a:visited{
 	font-family: Righteous;
 	text-align:center;
 	white-space: nowrap;
-    width: 40px;"/>data</div></a>
+    width: 40px;">data</div></a>
 	<div style="position: absolute;
     right: 60px;
     top: 308px;
@@ -351,8 +362,8 @@ a:visited{
 	font-family: Righteous;
 	text-align:center;
     width: 52px;"
-	alt="Treemap"
-	title="Treemap"
+	alt="Network"
+	title="Network"
 	onclick='show(6);'>Network</div>
 	<div style="position: absolute;
     right: 122px;
@@ -367,7 +378,7 @@ a:visited{
 	onclick='show(4);'>Resource</div>
 	<div style="position: absolute;
     right: 60px;
-    top: 408px;
+    top: 393px;
     height: 22px;
 	font-size:12px;
 	font-family: Righteous;
@@ -378,7 +389,7 @@ a:visited{
 	onclick='show(1);'>Timeline</div>
 	<div style="position: absolute;
     right: 0px;
-    top: 408px;
+    top: 393px;
     height: 22px;
 	font-size:12px;
 	font-family: Righteous;
@@ -389,7 +400,7 @@ a:visited{
 	onclick='show(2);'>Treemap</div>
 	<div style="position: absolute;
     right: 120px;
-    top: 408px;
+    top: 393px;
     height: 22px;
 	font-size:12px;
 	font-family: Righteous;
@@ -398,10 +409,21 @@ a:visited{
 	alt="Line Plot"
 	title="Line Plot"
 	onclick='show(3);'>Line Plot</div>
+	<div style="position: absolute;
+    right: 60px;
+    top: 478px;
+    height: 22px;
+	font-size:12px;
+	font-family: Righteous;
+	text-align:center;
+    width: 52px;"
+	alt="Influence"
+	title="Influence"
+	onclick='show(7);'>Influence</div>
 
 	<div style="position: absolute;
     right: -5px;
-    top: 430px;
+    top: 515px;"
     alt="Select Country"
 	title="Select Country" id="countrylist"></div>
 	
@@ -431,6 +453,18 @@ a:visited{
     left: 5;
     top: 5;
     z-index: 99;" id="viz6" class="viz viz6"></div>
+<div style="position: fixed; opacity:0;
+    left: 5;
+    top: 5;
+    z-index: 99;" id="viz7" class="viz viz7"></div>
+<div style="position: fixed; opacity:0;
+    left: 5;
+    top: 5;
+    z-index: 99;" id="viz8" class="viz viz8"></div>
+<div style="position: fixed; opacity:0;
+    left: 5;
+    top: 5;
+    z-index: 99;" id="viz9" class="viz viz9"></div>
 <div style="position: fixed; opacity:0; 
 	left:0;
 	bottom:0;
@@ -501,7 +535,7 @@ a:visited{
 
   setTimeout(function(){d3.selectAll(".logo").style("opacity",1)},1000)
 
-  var showd=[true,true,true,true,true,true];
+  var showd=[true,true,true,true,true,true,true,true,true];
 
   var visualization = d3plus.viz().container("#viz1")
   var visualization2 = d3plus.viz().container("#viz2")
@@ -509,10 +543,17 @@ a:visited{
   var visualization4 = d3plus.viz().container("#viz4")
   var visualization5 = d3plus.viz().container("#viz5")
   var visualization6 = d3plus.viz().container("#viz6")
+  var visualization7 = d3plus.viz().container("#viz7")
+  var visualization8 = d3plus.viz().container("#viz8")
+  var visualization9 = d3plus.viz().container("#viz9")
   var viz6drop = d3plus.form().container("#viz6drop")
 
   var load=function(){};
+  var load7=function(){};
   var network=function(y,v){};
+  var ids=["type","country","partner"];
+  var country7="json/77/impex_n_uk.json"; 
+		
 
   function show(a){
 
@@ -525,12 +566,18 @@ a:visited{
 	d3.selectAll(".viz4").style("opacity",0);
 	d3.selectAll(".viz5").style("opacity",0);
 	d3.selectAll(".viz6").style("opacity",0);
+	d3.selectAll(".viz7").style("opacity",0);
+	d3.selectAll(".viz8").style("opacity",0);
+	d3.selectAll(".viz9").style("opacity",0);
 	d3.selectAll(".viz1").style("z-index",99);
 	d3.selectAll(".viz2").style("z-index",99);
 	d3.selectAll(".viz3").style("z-index",99);
 	d3.selectAll(".viz4").style("z-index",99);
 	d3.selectAll(".viz5").style("z-index",99);
 	d3.selectAll(".viz6").style("z-index",99);
+	d3.selectAll(".viz7").style("z-index",99);
+	d3.selectAll(".viz8").style("z-index",99);
+	d3.selectAll(".viz9").style("z-index",99);
 	
 	d3.selectAll(".viz"+a).style("z-index",100);
 	d3.selectAll(".viz"+a).style("opacity",1);
@@ -939,7 +986,7 @@ a:visited{
 		.width(174)
 		.text("country")
 		.focus(initcountry,function(d){
-			showd=[true,true,true];
+			showd=[true,true,true,true,true,true,true,true,true];
 			showd[initviz-1]=false;
 			load(d,initviz);
 		})
@@ -1330,7 +1377,13 @@ a:visited{
 				
 				viz6drop
 				.draw();
+
+			} else if (viz==7) {
 				
+				initcountry=country;
+				sethash();
+				load7(country7);
+
 			}
 		
 		};
@@ -1495,6 +1548,41 @@ a:visited{
 				"label" : " "
 			  }]
 			  })
+
+		visualization7
+		    .type("bubbles")       // visualization type
+		    .size({"value":"inf","scale":d3.scale.linear()})         // key name to size bubbles
+		    .font(font)
+		    .format(function(d){return d})
+		    .legend(false)
+		    .ui({"font":{"size":12},"value":[
+		      {"method" : function(v){
+		        country7=v;
+		        load7(v);
+		      },
+		      "value"  :[{"Hybrid":"json/77/impex_n_uk.json"},{"Import":"json/77i/impex_i_uk.json"},{"Export":"json/77e/impex_e_uk.json"},{"Normalized Hybrid":"json/77/nimpex_n_uk.json"},{"Normalized Import":"json/77i/nimpex_i_uk.json"},{"Normalized Export":"json/77e/nimpex_e_uk.json"}],
+		      "label" : " ",
+		      "type" : "drop"
+		      },
+		      {"method" :"size",
+		      "value"  :[{"Influence":"inf"},{"Importance":"imp"}],
+		      "label" : " "
+		      }
+			]})
+
+		load7=function(file){
+	      d3.json(file, function(error, data) {
+	         visualization7
+	        .data(data)     // data to use with the visualization
+	        .id(ids) // nesting keys
+	        .depth(1)
+	        .color(function(d){
+	          return d[ids[d.d3plus.depth]];
+	          //return clrs[isocountries[d["id"]]];
+	        })
+	        .draw()
+	    })
+	    }
 
 		var dropyears=[];
 		for (i in d3.range(1962,2016)){
