@@ -26,8 +26,8 @@
 	<title>Sustainable Energy Transitions Exploratorium</title>
 	<style>
 		@font-face {
-			font-family: "Righteous";
-			src: url(font/Righteous-Regular.ttf) format("truetype");
+			font-family: "Arial";
+			src: url(font/Arial-Regular.ttf) format("truetype");
 		}
 
 		.logo,
@@ -59,12 +59,12 @@
 		}
 
 		a {
-			font-family: Righteous;
+			font-family: Arial;
 			text-decoration: none;
 		}
 
 		a:hover {
-			font-family: Righteous;
+			font-family: Arial;
 			text-decoration: underline;
 		}
 
@@ -243,7 +243,7 @@
     height: 22px;
 	color: #888;
 	font-size:20px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
 	white-space: nowrap;
     width: 100px;" />NETSET 1.0
@@ -299,7 +299,7 @@
     top: 200px;
     height: 22px;
 	font-size:10px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
 	white-space: nowrap;
     width: 40px;">description</div>
@@ -316,7 +316,7 @@
     top: 200px;
     height: 22px;
 	font-size:10px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
 	white-space: nowrap;
     width: 40px;">engine</div>
@@ -333,7 +333,7 @@
     top: 200px;
     height: 22px;
 	font-size:10px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
 	white-space: nowrap;
     width: 40px;" />credit</div></a>
@@ -349,7 +349,7 @@
     top: 200px;
     height: 22px;
 	font-size:10px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
 	white-space: nowrap;
     width: 40px;">data</div>
@@ -359,7 +359,7 @@
     top: 308px;
     height: 22px;
 	font-size:12px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
     width: 52px;" alt="Timeline" title="Timeline" onclick='show(5);'>Map</div>
 	<div style="position: absolute;
@@ -367,7 +367,7 @@
     top: 308px;
     height: 22px;
 	font-size:12px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
     width: 52px;" alt="Network" title="Network" onclick='show(6);'>Network</div>
 	<div style="position: absolute;
@@ -375,7 +375,7 @@
     top: 308px;
     height: 22px;
 	font-size:12px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
     width: 52px;" alt="Line Plot" title="Line Plot" onclick='show(4);'>Resource</div>
 	<div style="position: absolute;
@@ -383,7 +383,7 @@
     top: 393px;
     height: 22px;
 	font-size:12px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
     width: 52px;" alt="Timeline" title="Timeline" onclick='show(1);'>Timeline</div>
 	<div style="position: absolute;
@@ -391,7 +391,7 @@
     top: 393px;
     height: 22px;
 	font-size:12px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
     width: 52px;" alt="Treemap" title="Treemap" onclick='show(2);'>Treemap</div>
 	<div style="position: absolute;
@@ -399,7 +399,7 @@
     top: 393px;
     height: 22px;
 	font-size:12px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
     width: 52px;" alt="Line Plot" title="Line Plot" onclick='show(3);'>Line Plot</div>
 	<div style="position: absolute;
@@ -407,7 +407,7 @@
     top: 478px;
     height: 22px;
 	font-size:12px;
-	font-family: Righteous;
+	font-family: Arial;
 	text-align:center;
     width: 52px;" alt="Influence" title="Influence" onclick='show(7);'>Influence</div>
 
@@ -964,12 +964,12 @@
 													var gen2 = "s";
 													var sub = { "m": "Outflow", "f": "Inflow" };
 													var title = { "font": { "size": 20 } };
-													var font = { "family": "Righteous", "size": 15 };
+													var font = { "family": "Arial", "size": 15 };
 
 													var countrydrop = d3plus.form()
 														.data(countrylist)
 														.container("#countrylist")
-														.font({ "family": "Righteous", "size": 15, "align": "center", "secondary": { "family": "Righteous" } })
+														.font({ "family": "Arial", "size": 15, "align": "center", "secondary": { "family": "Arial" } })
 														.id("country")
 														.width(174)
 														.text("country")
@@ -1011,7 +1011,7 @@
 													var scenariodrop = d3plus.form()
 														.data(scenariolist)
 														.container("#scenariolist")
-														.font({ "family": "Righteous", "size": 15, "align": "center", "secondary": { "family": "Righteous" } })
+														.font({ "family": "Arial", "size": 15, "align": "center", "secondary": { "family": "Arial" } })
 														.id("id")
 														.width(174)
 														.text("name")
@@ -1616,14 +1616,14 @@
 														.id("id")
 														.width(100)
 														.title('please select energy source and year:  ')
-														.font({ "family": "Righteous", "size": 15, "align": "center", "secondary": { "family": "Righteous" } })
+														.font({ "family": "Arial", "size": 15, "align": "center", "secondary": { "family": "Arial" } })
 														.focus("select", function (d) {
 															var countrydrop = d3plus.form()
 																.data(dropyears)
 																.container("#viz6drop2")
 																.id("id")
 																.width(100)
-																.font({ "family": "Righteous", "size": 15, "align": "center", "secondary": { "family": "Righteous" } })
+																.font({ "family": "Arial", "size": 15, "align": "center", "secondary": { "family": "Arial" } })
 																.focus("select", function (y) {
 																	d3.json(masterpath + 'grid/' + y + '_' + d + '_grid.json', function (grid) {
 																		visualization6
